@@ -29,5 +29,5 @@ func main(){
     		`{"UserID":1532}`,
     	)
 }
-
 ```
+or see: [client_test.go](https://github.com/gogoods/grpcli/blob/main/client_test.go)
