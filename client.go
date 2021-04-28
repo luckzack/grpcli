@@ -68,6 +68,18 @@ func NewClient() *Client {
 	return g
 }
 
+func (g *Client) SetHeaders(headers []string) {
+	g.headers = headers
+}
+
+func (g *Client) AddHeaders(headers []string) {
+	g.headers = append(g.headers, headers...)
+}
+
+func (g *Client) ClearHeaders(headers []string) {
+	g.headers = []string{}
+}
+
 func (g *Client) Invoke(ctx context.Context, target, service, method string, data string) (
 	reply string, cost time.Duration, err error) {
 

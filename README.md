@@ -2,15 +2,17 @@
 A generic grpc client based on grpcurl.
 
 
-## Requires:
+## Prerequisites:
+
+1. Start a GRPC server and enable reflection like below:
 
 ```
 import "google.golang.org/grpc/reflection"
 
 func main(){
-    server := grpc.NewServer()
-    
+    server := grpc.NewServer()    
     reflection.Register(server)
+    // start server listening    
 }
 ```
 
