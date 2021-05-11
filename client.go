@@ -98,9 +98,11 @@ func (g *Client) Invoke(ctx context.Context, target, service, method string, dat
 
 // GetResource - open resource to targeted grpc server
 func (g *Client) GetResource(ctx context.Context, target string, plainText, isRestartConn bool) (*Resource, error) {
-	if conn, ok := g.activeConn.getConnection(target); ok {
-		if !isRestartConn && conn.isValid() {
-			return conn, nil
+	if r, ok := g.activeConn.getConnection(target); ok {
+		if !isRestartConn && r.isValid() {
+			h := append(g.headers, g.reflectHeaders...)
+			r.headers = h
+			return r, nil
 		}
 		g.CloseActiveConns(target)
 	}
