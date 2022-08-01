@@ -94,7 +94,7 @@ func (g *Client) Invoke(ctx context.Context, target, service, method string, dat
 	}
 	buf := bytes.NewBuffer([]byte(data))
 	//return rs.Invoke(ctx, fmt.Sprintf("proto.%s.%s", service, method), buf)
-	return rs.Invoke(ctx, fmt.Sprintf("proto.%s.%s", service, method), buf)
+	return rs.Invoke(ctx, fmt.Sprintf("%s.%s", service, method), buf)
 }
 
 // GetResource - open resource to targeted grpc server
