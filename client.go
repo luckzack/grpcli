@@ -93,6 +93,7 @@ func (g *Client) Invoke(ctx context.Context, target, service, method string, dat
 		return
 	}
 	buf := bytes.NewBuffer([]byte(data))
+	//return rs.Invoke(ctx, fmt.Sprintf("proto.%s.%s", service, method), buf)
 	return rs.Invoke(ctx, fmt.Sprintf("proto.%s.%s", service, method), buf)
 }
 
